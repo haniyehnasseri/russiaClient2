@@ -1,0 +1,172 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cfaf="urn:customs.ru:ForeignApi:Formats:1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:customs.ru:ForeignApi:Formats:1.0" version="1.0">
+    <xs:annotation>
+        <xs:documentation>Endpoint SendMessage</xs:documentation>
+    </xs:annotation>
+    <xs:element name="SendMessageRequest" type="cfaf:SendMessageRequestType">
+        <xs:annotation>
+            <xs:documentation>Request to send a document</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SendMessageResponse" type="cfaf:SendMessageResponseType">
+        <xs:annotation>
+            <xs:documentation>Response to document sending</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="SendMessageRequestType">
+        <xs:complexContent>
+            <xs:extension base="cfaf:MessageType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SendMessageResponseType">
+        <xs:complexContent>
+            <xs:extension base="cfaf:SuccessProcessingResultType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:annotation>
+        <xs:documentation>Endpoint GetNewMessageList</xs:documentation>
+    </xs:annotation>
+    <xs:element name="GetNewMessageListRequest" type="cfaf:GetNewMessageListRequestType">
+        <xs:annotation>
+            <xs:documentation>Message list request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="GetNewMessageListResponse" type="cfaf:GetNewMessageListResponseType">
+        <xs:annotation>
+            <xs:documentation>Response to message list request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="GetNewMessageListRequestType"/>
+    <xs:complexType name="GetNewMessageListResponseType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="EnvelopeID" type="xs:token">
+                <xs:annotation>
+                    <xs:documentation>Identifier of message.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:annotation>
+        <xs:documentation>Endpoint GetMessage</xs:documentation>
+    </xs:annotation>
+    <xs:element name="GetMessageRequest" type="cfaf:GetMessageRequestType">
+        <xs:annotation>
+            <xs:documentation>Message body request</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="GetMessageResponse" type="cfaf:GetMessageResponseType">
+        <xs:annotation>
+            <xs:documentation>Response containing message body</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="GetMessageRequestType">
+        <xs:sequence>
+            <xs:element name="EnvelopeID" type="xs:token">
+                <xs:annotation>
+                    <xs:documentation>Identifier of message.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetMessageResponseType">
+        <xs:complexContent>
+            <xs:extension base="cfaf:MessageType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:annotation>
+        <xs:documentation>Endpoint ConfirmMessage</xs:documentation>
+    </xs:annotation>
+    <xs:element name="ConfirmationMessageRequest" type="cfaf:ConfirmationMessageRequestType">
+        <xs:annotation>
+            <xs:documentation>Request to mark message as read</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ConfirmationMessageResponse" type="cfaf:ConfirmationMessageResponseType">
+        <xs:annotation>
+            <xs:documentation>Response to mark the message as read</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="ConfirmationMessageRequestType">
+        <xs:sequence>
+            <xs:element name="EnvelopeID" type="xs:token">
+                <xs:annotation>
+                    <xs:documentation>Identifier of message.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ConfirmationMessageResponseType">
+        <xs:complexContent>
+            <xs:extension base="cfaf:SuccessProcessingResultType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:annotation>
+        <xs:documentation>Общие комплексные типы</xs:documentation>
+    </xs:annotation>
+    <xs:complexType name="MessageType">
+        <xs:sequence>
+            <xs:element name="MessageMeta">
+                <xs:annotation>
+                    <xs:documentation>Meta information about message.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="MessageKind" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Type og message. Possible variations: INFORM, RESULT, CONFIR, SYSTST.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="PreparationDateTime" type="xs:dateTime">
+                            <xs:annotation>
+                                <xs:documentation>Preparation date and time</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="EnvelopeId" type="xs:token">
+                            <xs:annotation>
+                                <xs:documentation>Identifier of message.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="InitialEnvelopeId" type="xs:token">
+                            <xs:annotation>
+                                <xs:documentation>Identifier of initial message. Required for RESULT, CONFIR.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="ConsignmentId" type="xs:token">
+                            <xs:annotation>
+                                <xs:documentation>UCR.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MessageContent">
+                <xs:annotation>
+                    <xs:documentation>Content part of message (document).</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:any namespace="##any" processContents="skip"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SuccessProcessingResultType">
+        <xs:annotation>
+            <xs:documentation>Complex type. Response about successful proccessing an action</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element fixed="0000" name="ResultCode" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Processing status code.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element fixed="Message successfully processed" name="ResultDescription" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Processing status description.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

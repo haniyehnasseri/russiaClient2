@@ -1,0 +1,111 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:cct="urn:customs.ru:ForeignApi:CommonTypes:1.0"
+    xmlns:fault="urn:customs.ru:ForeignApi:FaultTypes:1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:customs.ru:ForeignApi:FaultTypes:1.0" version="1.0">
+    <xs:element name="InvalidMessage" type="fault:InvalidMessageFaultType">
+        <xs:annotation>
+            <xs:documentation>The message does not match the XSD schema</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MessageAlreadyExist" type="fault:MessageAlreadyExistFaultType">
+        <xs:annotation>
+            <xs:documentation>A document with the specified IDs already exists</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="MessageNotFound" type="fault:MessageNotFoundFaultType">
+        <xs:annotation>
+            <xs:documentation>Message not found</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="UnknownError" type="fault:UnknownErrorType">
+        <xs:annotation>
+            <xs:documentation>Unknown error</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="MessageAlreadyExistFaultType">
+        <xs:complexContent>
+            <xs:restriction base="fault:FaultCommonType">
+                <xs:sequence>
+                    <xs:element fixed="1100" name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error code.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error description.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InvalidMessageFaultType">
+        <xs:complexContent>
+            <xs:restriction base="fault:FaultCommonType">
+                <xs:sequence>
+                    <xs:element fixed="1200" name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error code.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error description.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MessageNotFoundFaultType">
+        <xs:complexContent>
+            <xs:restriction base="fault:FaultCommonType">
+                <xs:sequence>
+                    <xs:element fixed="1300" name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error code.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error description.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="UnknownErrorType">
+        <xs:complexContent>
+            <xs:restriction base="fault:FaultCommonType">
+                <xs:sequence>
+                    <xs:element fixed="9999" name="Code" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error code.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Description" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Error description.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="FaultCommonType">
+        <xs:sequence>
+            <xs:element name="Code" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Error code.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Error description.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
