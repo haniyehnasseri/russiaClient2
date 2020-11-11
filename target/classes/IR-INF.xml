@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+		<IR_Inf:Information xsi:schemaLocation="urn:customs.ru:IR_Information:1.0.0 IRInformation.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cat_ru="urn:customs.ru:IRCommonAggregateTypes:1.0.0" xmlns:IR_Inf="urn:customs.ru:IR_Information:1.0.0">
+			<cat_ru:DocumentID>IR2018110630100814234</cat_ru:DocumentID>
+			<IR_Inf:DocumentDateTime>2020-03-14T08:48:13.196+03:30</IR_Inf:DocumentDateTime>
+			<IR_Inf:ConsignmentIdentifier>IR20200518/45100/965612</IR_Inf:ConsignmentIdentifier>
+			<IR_Inf:TransportInfo>
+				<IR_Inf:ContainerNumber> 
+					<cat_ru:ContainerIdentificator>BULK123456-7</cat_ru:ContainerIdentificator>
+					<cat_ru:Indicator>true</cat_ru:Indicator>
+				</IR_Inf:ContainerNumber>
+			</IR_Inf:TransportInfo>
+			<IR_Inf:GoodsInfo>
+				<IR_Inf:GoodsNumeric>1</IR_Inf:GoodsNumeric>
+				<IR_Inf:GoodsTNVEDCode>03061700</IR_Inf:GoodsTNVEDCode>
+				<IR_Inf:GoodsDescription>frozen shrimp Size 100-120</IR_Inf:GoodsDescription>
+				<IR_Inf:GrossWeight>19833</IR_Inf:GrossWeight>
+				<IR_Inf:NetWeight>18000</IR_Inf:NetWeight>
+				<IR_Inf:AmountInvoice>57600</IR_Inf:AmountInvoice>
+				<IR_Inf:Currency>840</IR_Inf:Currency>
+				<IR_Inf:CountryDispatchCode>IR</IR_Inf:CountryDispatchCode>
+				<IR_Inf:OriginCountryCode>IR</IR_Inf:OriginCountryCode>
+				<IR_Inf:TotalPackageQuantity>1500</IR_Inf:TotalPackageQuantity>
+				<IR_Inf:PackCode>PK</IR_Inf:PackCode>
+				<IR_Inf:CurrencyExchangeRates>136721.0</IR_Inf:CurrencyExchangeRates>
+				<IR_Inf:StatisticalCost>0</IR_Inf:StatisticalCost>
+				<IR_Inf:CustomsCost>0</IR_Inf:CustomsCost>
+				<IR_Inf:DeclNum>45100-965612</IR_Inf:DeclNum>
+			</IR_Inf:GoodsInfo>
+			<IR_Inf:PersonInfo>
+				<IR_Inf:Consignor>
+					<IR_Inf:OrganizationName>KALIPSO LLC</IR_Inf:OrganizationName>
+					<IR_Inf:Address>119180, RUSSIA, MOSCOW, ST. POLYANKA B. BLD .51A / 9, FLOOR 8, AREA I,ROOM 1, OFFICE 102 TEL:8(910)432-32-12</IR_Inf:Address>
+				</IR_Inf:Consignor>
+				<IR_Inf:Consignee>
+					<IR_Inf:OrganizationName>ALBORZ ABZIAN TRADING  </IR_Inf:OrganizationName>
+					<IR_Inf:Address>POSTAL CODE: 1466975971</IR_Inf:Address>
+				</IR_Inf:Consignee>
+			</IR_Inf:PersonInfo>
+			<IR_Inf:DocumentInfo>
+				<IR_Inf:DeliveryTermsStringCode>FOB</IR_Inf:DeliveryTermsStringCode>
+				<IR_Inf:InvoiceNumber>no-data</IR_Inf:InvoiceNumber>
+				<IR_Inf:InvoiceDate>2020-02-19</IR_Inf:InvoiceDate>
+				<IR_Inf:ConsignmentNoteNumber>no-data</IR_Inf:ConsignmentNoteNumber>
+				<IR_Inf:ConsignmentNoteDate>2011-01-01</IR_Inf:ConsignmentNoteDate>
+				<IR_Inf:ForeignTradeContractNumber>no-data</IR_Inf:ForeignTradeContractNumber>
+				<IR_Inf:ForeignTradeContractDate>2011-01-01</IR_Inf:ForeignTradeContractDate>
+			</IR_Inf:DocumentInfo>
+		</IR_Inf:Information>

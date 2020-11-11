@@ -1,5 +1,7 @@
 package Client;
 
+import Mapper.getDataMapper;
+import Mapper.sentDataMapper;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import service.RU.*;
@@ -13,8 +15,13 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.ws.BindingProvider;
+import java.io.File;
+import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -54,33 +61,52 @@ public class MessageHandler {
             context.put(BindingProvider.USERNAME_PROPERTY, "619369fe-e557-4d58-ade0-0f0f2434a320");
             context.put(BindingProvider.PASSWORD_PROPERTY, "PToE4M");
             GetNewMessageListRequestType parameters = new GetNewMessageListRequestType();
+            getDataMapper.getInstance().saveSingleMessageOfList("gfhghgjhjhkhjkjkjlkjjjahj", "NEW");
             GetNewMessageListResponseType res = port.getNewMessageList(parameters);
+
             System.out.println("list:");
-            for(int i=0 ; i < res.getEnvelopeID().size() ; i++){
-                System.out.println(res.getEnvelopeID().get(i));
+            for (int i = 0; i < res.getEnvelopeID().size(); i++) {
+                String currentEnvelope = res.getEnvelopeID().get(i);
+                System.out.println(currentEnvelope);
+                /* ADDED */
+                getDataMapper.getInstance().saveSingleMessageOfList(currentEnvelope, "NEW");
+                /* ADDED */
             }
+
             return true;
-        } catch (UnknownException ex) {
-            Logger.getLogger(MainNewMessageLis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnknownException e) {
+            e.printStackTrace();
             return false;
         }
     }
 
-    public boolean sendMessage(String content) {
+    public boolean sendMessage(File content, String fXmlPath, String type) {
         try {
             ForeignApi port = fas.getForeignApiEndpointPort();
-            //System.out.println(port);
             BindingProvider provider = (BindingProvider) port;
             Map<String, Object> context = provider.getRequestContext();
             context.put(BindingProvider.USERNAME_PROPERTY, "619369fe-e557-4d58-ade0-0f0f2434a320");
             context.put(BindingProvider.PASSWORD_PROPERTY, "PToE4M");
-            SendMessageRequestType parameters = XmlDocumentUtility.getInstance().CreatInformation(content);
+            SendMessageRequestType parameters = XmlDocumentUtility.getInstance().createData(content, type);
             SendMessageResponseType res = port.sendMessage(parameters);
             //after this we should call Res and Send Confirm
+            /* ADDED */
+            if(res.getResultCode().equals("80000")){
+                String stringContent = Files.readString(Paths.get(fXmlPath), StandardCharsets.UTF_8);
+                boolean saveResult = false;
+                while(!saveResult){
+                    saveResult = sentDataMapper.getInstance().saveMessage(parameters.getMessageMeta(), stringContent, type);
+                }
+
+                System.out.println("Successfully sent and saved ! ");
+                return true;
+            }
+            /* ADDED */
             System.out.println("resultCode: " + res.getResultCode() + "\n" + "resultDescription: " + res.getResultDescription());
-            return true;
-        } catch (InvalidMessageException | MessageAlreadyExistException | UnknownException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+
+        } catch (IOException  | MessageAlreadyExistException | InvalidMessageException | UnknownException e) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
@@ -98,16 +124,23 @@ public class MessageHandler {
             GetMessageResponseType res = port.getMessage(parameters);
             String resString = XmlDocumentUtility.getInstance().documentToXml(res.getMessageContent().getAny().getOwnerDocument());
             String metaString = res.getMessageMeta().toString();
+            /* ADDED */
+            boolean saveResult = getDataMapper.getInstance().saveMessageBody(res.getMessageMeta(), resString);
+            System.out.println(saveResult);
+            /* ADDED */
             System.out.println("res:\n" + resString + "meta:\n" + metaString);
             return true;
         } catch (UnknownException | MessageNotFoundException ex) {
-            Logger.getLogger(MainGetMessageBody.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(MainGetMessageBody.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
     }
 
-    public boolean sendConfirm(String contentxml){
+    /* MATCHED WITH SENDMESSAGE */
+
+    /*public boolean sendConfirm(File xmlContent){
         try {
             ForeignApi port = fas.getForeignApiEndpointPort();
             BindingProvider provider = (BindingProvider) port;
@@ -117,13 +150,13 @@ public class MessageHandler {
             SendMessageRequestType parameters = new SendMessageRequestType();
             MessageType.MessageContent content = new MessageType.MessageContent();
 
-            Document document = XmlDocumentUtility.getInstance().convertStringToXMLDocument(contentxml);
+            Document document = XmlDocumentUtility.getInstance().convertStringToXMLDocument(xmlContent);
             content.setAny(document.getDocumentElement());
             parameters.setMessageContent(content);
             MessageType.MessageMeta meta = new MessageType.MessageMeta();
             meta.setEnvelopeId("4f741c2d-2c59-43c5-9454-2e798bb4eb55");
             meta.setInitialEnvelopeId("6b6be9d5-5ea3-4c0b-a68a-582000a9f412");
-            meta.setMessageKind("CONFIR");
+            meta.setMessageKind("CONFIRM");
             XmlDateUtility dateUtility = new XmlDateUtility();
             XMLGregorianCalendar time = dateUtility.createXMLGregorinCalendarNOW();
             meta.setPreparationDateTime(time);
@@ -132,10 +165,12 @@ public class MessageHandler {
             System.out.println("resultCode: " + res.getResultCode() + "\n" + "resultDescription: " + res.getResultDescription());
             return true;
         } catch (InvalidMessageException | MessageAlreadyExistException | UnknownException ex) {
-            Logger.getLogger(MainSendConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(MainSendConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
+    }*/
+    /* MATCHED WITH SENDMESSAGE */
 
     public boolean confirmMessage(String envelopeID){
         try {
@@ -149,10 +184,15 @@ public class MessageHandler {
             parameters.setEnvelopeID(envelopeID);
             /* this line has been changed */
             ConfirmationMessageResponseType res = port.confirmMessage(parameters);
+            /* ADDED */
+            boolean saveResult = getDataMapper.getInstance().saveSingleMessageOfList(envelopeID, "FIRST_CONFIRM");
+            System.out.println(saveResult);
+            /* ADDED */
             System.out.println("resultCode: " + res.getResultCode() + "\n" + "resultDescription: " + res.getResultDescription());
             return true;
         } catch (UnknownException | MessageNotFoundException ex) {
-            Logger.getLogger(MainConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(MainConfirm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

@@ -13,6 +13,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.UUID;
@@ -27,20 +28,22 @@ public class XmlDocumentUtility {
         return instance;
     }
 
-    public SendMessageRequestType CreatInformation(String informationBody) {
+    public SendMessageRequestType createData(File informationBody, String type) {
         SendMessageRequestType parameters = new SendMessageRequestType();
         MessageType.MessageContent content = new MessageType.MessageContent();
+        MessageType.MessageMeta meta = new MessageType.MessageMeta();
         Document document = convertStringToXMLDocument(informationBody);
         if(document != null){
             content.setAny(document.getDocumentElement());
             parameters.setMessageContent(content);
-            MessageType.MessageMeta meta = new MessageType.MessageMeta();
             /* this line is changed */
             meta.setConsignmentId(document.getElementsByTagName("IR_Inf:ConsignmentIdentifier").item(0).getTextContent());
             /* this line is changed */
             meta.setEnvelopeId(UUID.randomUUID().toString());
+            /* what is this ? */
             meta.setInitialEnvelopeId("4f741c2d-2c59-43c5-9454-2e798bb4eb54");
-            meta.setMessageKind("INFORM");
+            /* what is this ? */
+            meta.setMessageKind(type);
             XmlDateUtility dateUtility = new XmlDateUtility();
             XMLGregorianCalendar time = dateUtility.createXMLGregorinCalendarNOW();
             meta.setPreparationDateTime(time);
@@ -50,7 +53,7 @@ public class XmlDocumentUtility {
 
     }
 
-    public Document convertStringToXMLDocument(String xmlString) {
+    public Document convertStringToXMLDocument(File xmlFile) {
         //Parser that produces DOM object trees from XML content
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
@@ -61,7 +64,8 @@ public class XmlDocumentUtility {
             builder = factory.newDocumentBuilder();
 
             //Parse the content to Document object
-            return builder.parse(new InputSource(new StringReader(xmlString)));
+            //return builder.parse(new InputSource(new StringReader(xmlString)));
+            return builder.parse(xmlFile);
         } catch (Exception e) {
             e.printStackTrace();
         }
