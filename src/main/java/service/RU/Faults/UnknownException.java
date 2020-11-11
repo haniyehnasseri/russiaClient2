@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Faults;
 
 import javax.xml.ws.WebFault;
 
@@ -13,7 +13,7 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "UnknownError", targetNamespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
 public class UnknownException extends Exception {
 
-    private service.RU.UnknownErrorType unknownError;
+    private UnknownErrorType unknownError;
 
     public UnknownException() {
         super();
@@ -27,17 +27,17 @@ public class UnknownException extends Exception {
         super(message, cause);
     }
 
-    public UnknownException(String message, service.RU.UnknownErrorType unknownError) {
+    public UnknownException(String message, UnknownErrorType unknownError) {
         super(message);
         this.unknownError = unknownError;
     }
 
-    public UnknownException(String message, service.RU.UnknownErrorType unknownError, java.lang.Throwable cause) {
+    public UnknownException(String message, UnknownErrorType unknownError, java.lang.Throwable cause) {
         super(message, cause);
         this.unknownError = unknownError;
     }
 
-    public service.RU.UnknownErrorType getFaultInfo() {
+    public UnknownErrorType getFaultInfo() {
         return this.unknownError;
     }
 }

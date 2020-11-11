@@ -1,6 +1,6 @@
 package Mapper;
 
-import service.RU.MessageType;
+import service.RU.Formats.MessageType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

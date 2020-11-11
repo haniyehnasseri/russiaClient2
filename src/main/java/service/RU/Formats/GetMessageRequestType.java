@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Formats;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * &lt;p&gt;Java class for ConfirmationMessageRequestType complex type.
+ * &lt;p&gt;Java class for GetMessageRequestType complex type.
  * 
  * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
  * 
  * &lt;pre&gt;
- * &amp;lt;complexType name="ConfirmationMessageRequestType"&amp;gt;
+ * &amp;lt;complexType name="GetMessageRequestType"&amp;gt;
  *   &amp;lt;complexContent&amp;gt;
  *     &amp;lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&amp;gt;
  *       &amp;lt;sequence&amp;gt;
@@ -30,10 +30,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ConfirmationMessageRequestType", propOrder = {
+@XmlType(name = "GetMessageRequestType", propOrder = {
     "envelopeID"
 })
-public class ConfirmationMessageRequestType {
+public class GetMessageRequestType {
 
     @XmlElement(name = "EnvelopeID", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)

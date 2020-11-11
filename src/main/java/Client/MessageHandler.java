@@ -2,28 +2,20 @@ package Client;
 
 import Mapper.getDataMapper;
 import Mapper.sentDataMapper;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 import service.RU.*;
+import service.RU.Faults.InvalidMessageException;
+import service.RU.Faults.MessageAlreadyExistException;
+import service.RU.Faults.MessageNotFoundException;
+import service.RU.Faults.UnknownException;
+import service.RU.Formats.*;
 
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.ws.BindingProvider;
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

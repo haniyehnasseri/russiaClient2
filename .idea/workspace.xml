@@ -2,24 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="891c2db8-77e9-46d6-85a6-eae07d515fc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/MainConfirm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/MainGetMessageBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/MainNewMessageLis.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/MainSendConfirm.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/MessageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Client/XmlDocumentUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/XmlDocumentUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Client/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/MainConfirm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/MainGetMessageBody.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/MainNewMessageLis.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/MainSendConfirm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/MessageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Client/MessageHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client/XmlDocumentUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Client/XmlDocumentUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/getDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mapper/getDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mapper/sentDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mapper/sentDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/ConfirmationMessageRequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/ConfirmationMessageRequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/ConfirmationMessageResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/ConfirmationMessageResponseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/FaultCommonType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/FaultCommonType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/ForeignApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/ForeignApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/GetMessageRequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/GetMessageRequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/GetMessageResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/GetMessageResponseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/GetNewMessageListRequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/GetNewMessageListRequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/GetNewMessageListResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/GetNewMessageListResponseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/InvalidMessageException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/InvalidMessageException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/InvalidMessageFaultType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/InvalidMessageFaultType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/MessageAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/MessageAlreadyExistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/MessageAlreadyExistFaultType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/MessageAlreadyExistFaultType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/MessageNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/MessageNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/MessageNotFoundFaultType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/MessageNotFoundFaultType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/ObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/ObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/SendMessageRequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/SendMessageRequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/SendMessageResponseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/SendMessageResponseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/SuccessProcessingResultType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Formats/SuccessProcessingResultType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/UnknownErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/UnknownErrorType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/RU/UnknownException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RU/Faults/UnknownException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +121,7 @@
       <workItem from="1603974434944" duration="1694000" />
       <workItem from="1603976744115" duration="12844000" />
       <workItem from="1604004423746" duration="54605000" />
-      <workItem from="1604994416043" duration="36736000" />
+      <workItem from="1604994416043" duration="37733000" />
     </task>
     <servers />
   </component>

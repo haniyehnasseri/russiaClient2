@@ -1,5 +1,11 @@
 package service.RU;
 
+import service.RU.Faults.InvalidMessageException;
+import service.RU.Faults.MessageAlreadyExistException;
+import service.RU.Faults.MessageNotFoundException;
+import service.RU.Faults.UnknownException;
+import service.RU.Formats.*;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -39,7 +45,7 @@ public interface ForeignApi {
     public GetNewMessageListResponseType getNewMessageList(
 
         @WebParam(partName = "parameters", name = "GetNewMessageListRequest", targetNamespace = "urn:customs.ru:ForeignApi:Formats:1.0")
-        GetNewMessageListRequestType parameters
+                GetNewMessageListRequestType parameters
     ) throws UnknownException;
 
     @WebMethod(operationName = "SendMessage", action = "urn:SendMessage")
@@ -47,6 +53,6 @@ public interface ForeignApi {
     public SendMessageResponseType sendMessage(
 
         @WebParam(partName = "parameters", name = "SendMessageRequest", targetNamespace = "urn:customs.ru:ForeignApi:Formats:1.0")
-        SendMessageRequestType parameters
+                SendMessageRequestType parameters
     ) throws InvalidMessageException, MessageAlreadyExistException, UnknownException;
 }

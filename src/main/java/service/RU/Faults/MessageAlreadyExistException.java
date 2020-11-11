@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Faults;
 
 import javax.xml.ws.WebFault;
 
@@ -13,7 +13,7 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "MessageAlreadyExist", targetNamespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
 public class MessageAlreadyExistException extends Exception {
 
-    private service.RU.MessageAlreadyExistFaultType messageAlreadyExist;
+    private MessageAlreadyExistFaultType messageAlreadyExist;
 
     public MessageAlreadyExistException() {
         super();
@@ -27,17 +27,17 @@ public class MessageAlreadyExistException extends Exception {
         super(message, cause);
     }
 
-    public MessageAlreadyExistException(String message, service.RU.MessageAlreadyExistFaultType messageAlreadyExist) {
+    public MessageAlreadyExistException(String message, MessageAlreadyExistFaultType messageAlreadyExist) {
         super(message);
         this.messageAlreadyExist = messageAlreadyExist;
     }
 
-    public MessageAlreadyExistException(String message, service.RU.MessageAlreadyExistFaultType messageAlreadyExist, java.lang.Throwable cause) {
+    public MessageAlreadyExistException(String message, MessageAlreadyExistFaultType messageAlreadyExist, java.lang.Throwable cause) {
         super(message, cause);
         this.messageAlreadyExist = messageAlreadyExist;
     }
 
-    public service.RU.MessageAlreadyExistFaultType getFaultInfo() {
+    public MessageAlreadyExistFaultType getFaultInfo() {
         return this.messageAlreadyExist;
     }
 }

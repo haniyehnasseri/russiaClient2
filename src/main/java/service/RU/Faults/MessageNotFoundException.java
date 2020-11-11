@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Faults;
 
 import javax.xml.ws.WebFault;
 
@@ -13,7 +13,7 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "MessageNotFound", targetNamespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
 public class MessageNotFoundException extends Exception {
 
-    private service.RU.MessageNotFoundFaultType messageNotFound;
+    private MessageNotFoundFaultType messageNotFound;
 
     public MessageNotFoundException() {
         super();
@@ -27,17 +27,17 @@ public class MessageNotFoundException extends Exception {
         super(message, cause);
     }
 
-    public MessageNotFoundException(String message, service.RU.MessageNotFoundFaultType messageNotFound) {
+    public MessageNotFoundException(String message, MessageNotFoundFaultType messageNotFound) {
         super(message);
         this.messageNotFound = messageNotFound;
     }
 
-    public MessageNotFoundException(String message, service.RU.MessageNotFoundFaultType messageNotFound, java.lang.Throwable cause) {
+    public MessageNotFoundException(String message, MessageNotFoundFaultType messageNotFound, java.lang.Throwable cause) {
         super(message, cause);
         this.messageNotFound = messageNotFound;
     }
 
-    public service.RU.MessageNotFoundFaultType getFaultInfo() {
+    public MessageNotFoundFaultType getFaultInfo() {
         return this.messageNotFound;
     }
 }

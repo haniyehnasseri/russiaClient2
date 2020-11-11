@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Faults;
 
 import javax.xml.ws.WebFault;
 
@@ -13,7 +13,7 @@ import javax.xml.ws.WebFault;
 @WebFault(name = "InvalidMessage", targetNamespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
 public class InvalidMessageException extends Exception {
 
-    private service.RU.InvalidMessageFaultType invalidMessage;
+    private InvalidMessageFaultType invalidMessage;
 
     public InvalidMessageException() {
         super();
@@ -27,17 +27,17 @@ public class InvalidMessageException extends Exception {
         super(message, cause);
     }
 
-    public InvalidMessageException(String message, service.RU.InvalidMessageFaultType invalidMessage) {
+    public InvalidMessageException(String message, InvalidMessageFaultType invalidMessage) {
         super(message);
         this.invalidMessage = invalidMessage;
     }
 
-    public InvalidMessageException(String message, service.RU.InvalidMessageFaultType invalidMessage, java.lang.Throwable cause) {
+    public InvalidMessageException(String message, InvalidMessageFaultType invalidMessage, java.lang.Throwable cause) {
         super(message, cause);
         this.invalidMessage = invalidMessage;
     }
 
-    public service.RU.InvalidMessageFaultType getFaultInfo() {
+    public InvalidMessageFaultType getFaultInfo() {
         return this.invalidMessage;
     }
 }

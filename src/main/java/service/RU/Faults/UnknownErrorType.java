@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Faults;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * &lt;p&gt;Java class for MessageNotFoundFaultType complex type.
+ * &lt;p&gt;Java class for UnknownErrorType complex type.
  * 
  * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
  * 
  * &lt;pre&gt;
- * &amp;lt;complexType name="MessageNotFoundFaultType"&amp;gt;
+ * &amp;lt;complexType name="UnknownErrorType"&amp;gt;
  *   &amp;lt;complexContent&amp;gt;
  *     &amp;lt;restriction base="{urn:customs.ru:ForeignApi:FaultTypes:1.0}FaultCommonType"&amp;gt;
  *       &amp;lt;sequence&amp;gt;
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MessageNotFoundFaultType", namespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
-public class MessageNotFoundFaultType
+@XmlType(name = "UnknownErrorType", namespace = "urn:customs.ru:ForeignApi:FaultTypes:1.0")
+public class UnknownErrorType
     extends FaultCommonType
 {
 

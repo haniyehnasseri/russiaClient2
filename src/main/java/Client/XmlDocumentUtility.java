@@ -1,9 +1,8 @@
 package Client;
 
 import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-import service.RU.MessageType;
-import service.RU.SendMessageRequestType;
+import service.RU.Formats.MessageType;
+import service.RU.Formats.SendMessageRequestType;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.DocumentBuilder;
@@ -14,7 +13,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.UUID;
 

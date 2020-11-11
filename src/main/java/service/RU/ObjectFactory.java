@@ -1,6 +1,9 @@
 
 package service.RU;
 
+import service.RU.Faults.*;
+import service.RU.Formats.*;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;

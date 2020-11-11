@@ -1,5 +1,5 @@
 
-package service.RU;
+package service.RU.Formats;
 
 import java.util.ArrayList;
 import java.util.List;
